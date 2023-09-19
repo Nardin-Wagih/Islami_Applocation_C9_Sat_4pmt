@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:islami/Core/Theme/Applicationtheme.dart';
+import 'package:islami/Quran/QuranDetails.dart';
+import 'package:islami/SplashScreen.dart';
 
 import 'HomeScreen.dart';
 
@@ -12,7 +15,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Flutter Demo', home: HomeScreen());
+    return MaterialApp(
+      title: 'Islami Application',
+      debugShowCheckedModeBanner: false,
+      routes: {
+        HomeScreen.routeName: (_) => HomeScreen(),
+        SplashScreen.routeName: (_) => SplashScreen(),
+        QuranDetails.routeName: (_) => QuranDetails(),
+      },
+      initialRoute: SplashScreen.routeName,
+      theme: ApplicationTheme.LightTheme,
+      darkTheme: ApplicationTheme.darkTheme,
+    );
   }
 }
 
