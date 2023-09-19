@@ -1,12 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:islami/Quran/QuranView.dart';
 
-class QuranDetails extends StatelessWidget {
+class QuranDetails extends StatefulWidget {
   static const String routeName = "QuranDetails";
 
   const QuranDetails({super.key});
 
   @override
+  State<QuranDetails> createState() => _QuranDetailsState();
+}
+
+class _QuranDetailsState extends State<QuranDetails> {
+  String Content = "";
+  List<String> allVerses = [];
+
+  @override
   Widget build(BuildContext context) {
+    var arg = ModalRoute.of(context)?.settings.arguments as SuraDetails;
+    if (Content.isEmpty) {
+      readFiles(arg.SuraNumber);
+    }
+
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context).size;
     return Container(
@@ -35,7 +50,7 @@ class QuranDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Sura Name",
+                    "سورة ${arg.SuraName} ",
                     style: theme.textTheme.bodyMedium,
                   ),
                   SizedBox(
@@ -52,11 +67,30 @@ class QuranDetails extends StatelessWidget {
                 color: theme.primaryColor,
                 indent: 40,
                 endIndent: 40,
-              )
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index) => Text(
+                    Content,
+                    style: theme.textTheme.bodySmall,
+                    textAlign: TextAlign.center,
+                  ),
+                  itemCount: allVerses.length,
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  readFiles(String index) async {
+    String Text = await rootBundle.loadString("assets/Files/$index.txt");
+    Content = Text;
+
+    setState(() {
+      allVerses = Content.split("\n");
+    });
   }
 }
