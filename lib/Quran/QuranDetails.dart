@@ -13,6 +13,7 @@ class QuranDetails extends StatefulWidget {
 
 class _QuranDetailsState extends State<QuranDetails> {
   String Content = "";
+  int verseNumber = 0;
   List<String> allVerses = [];
 
   @override
@@ -75,7 +76,7 @@ class _QuranDetailsState extends State<QuranDetails> {
                     style: theme.textTheme.bodySmall,
                     textAlign: TextAlign.center,
                   ),
-                  itemCount: allVerses.length,
+                  itemCount: 1,
                 ),
               ),
             ],
