@@ -3,6 +3,7 @@ import 'package:islami/Core/Theme/Applicationtheme.dart';
 import 'package:islami/Quran/QuranDetails.dart';
 import 'package:islami/SplashScreen.dart';
 
+import 'Ahadeth/AhadethDetails.dart';
 import 'HomeScreen.dart';
 
 void main() {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (_) => HomeScreen(),
         SplashScreen.routeName: (_) => SplashScreen(),
         QuranDetails.routeName: (_) => QuranDetails(),
+        AhadethDetails.routeName: (_) => AhadethDetails(),
       },
       initialRoute: SplashScreen.routeName,
       theme: ApplicationTheme.LightTheme,
