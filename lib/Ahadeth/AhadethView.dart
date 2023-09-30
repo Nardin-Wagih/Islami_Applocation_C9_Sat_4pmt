@@ -70,7 +70,6 @@ class _AhadethViewState extends State<AhadethView> {
 
       setState(() {});
 
-      print(title);
     }
   }
 }

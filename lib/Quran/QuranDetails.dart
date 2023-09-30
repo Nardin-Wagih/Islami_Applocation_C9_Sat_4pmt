@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/Quran/QuranView.dart';
 
 class QuranDetails extends StatefulWidget {
@@ -34,7 +35,7 @@ class _QuranDetailsState extends State<QuranDetails> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: Text("اسلامي"),
+          title: Text(AppLocalizations.of(context)!.islami),
         ),
         body: Container(
           padding: EdgeInsets.symmetric(vertical: 40, horizontal: 15),

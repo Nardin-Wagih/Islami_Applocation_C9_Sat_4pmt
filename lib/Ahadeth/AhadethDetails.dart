@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'AhadethView.dart';
 
@@ -31,7 +32,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: Text("اسلامي"),
+          title: Text(AppLocalizations.of(context)!.islami),
         ),
         body: Container(
           padding: EdgeInsets.symmetric(vertical: 40, horizontal: 15),

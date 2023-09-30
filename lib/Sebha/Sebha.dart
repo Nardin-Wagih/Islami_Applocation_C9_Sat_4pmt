@@ -44,14 +44,14 @@ class Sebha extends StatelessWidget {
               width: 137,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: theme.primaryColor,
+                color: theme.colorScheme.onSecondary,
               ),
               child: Text(
                 "سبحان الله",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
-                    color: Colors.white),
+                    color: Colors.black),
               ),
             ),
           ],
