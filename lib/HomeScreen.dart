@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/Ahadeth/AhadethView.dart';
+import 'package:islami/Core/Provider/AppProvider.dart';
 import 'package:islami/Quran/QuranView.dart';
 import 'package:islami/Radio/Radio.dart';
 import 'package:islami/Sebha/Sebha.dart';
 import 'package:islami/Settings/Settings.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
@@ -16,14 +18,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int SelectedIndex = 4;
+  int SelectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
+    var appProvider = Provider.of<AppProvider>(context);
+
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage("assets/Images/background.png"),
+        image: AssetImage(appProvider.background()),
         fit: BoxFit.cover,
       )),
       child: Scaffold(
@@ -82,4 +86,3 @@ class _HomeScreenState extends State<HomeScreen> {
     Settings(),
   ];
 }
-

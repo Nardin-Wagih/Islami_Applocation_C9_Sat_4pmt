@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami/Core/Theme/Applicationtheme.dart';
 
 typedef SettingsOptionClicked = void Function();
 
@@ -35,14 +36,19 @@ class SettingsItem extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: theme.primaryColor,
+                  color: theme.colorScheme.onSecondary,
                   width: 2,
                 )),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(SelectedOption),
-                Icon(Icons.arrow_drop_down),
+                ApplicationTheme.isDark
+                    ? Icon(
+                        Icons.arrow_drop_down,
+                        color: theme.colorScheme.onSecondary,
+                      )
+                    : Icon(Icons.arrow_drop_down),
               ],
             ),
           ),

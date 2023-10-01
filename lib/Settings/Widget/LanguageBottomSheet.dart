@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islami/Core/Provider/AppProvider.dart';
+import 'package:provider/provider.dart';
 
 import 'SelectedOption.dart';
 import 'UnSelectedoption.dart';
@@ -10,6 +12,7 @@ class LanguageBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context).size;
+    var appProvider = Provider.of<AppProvider>(context);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       decoration: BoxDecoration(
@@ -18,15 +21,26 @@ class LanguageBottomSheet extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SelectedOptionWidget(
-            SelectedOption: "English",
+          GestureDetector(
+            onTap: () {
+              appProvider.changeLanuage("en");
+              Navigator.pop(context);
+            },
+            child: appProvider.CurrentLanguage == "en"
+                ? SelectedOptionWidget(SelectedOption: "English")
+                : UnSelectedOptionWidget(UnSelectedOption: "English"),
           ),
           SizedBox(
             height: 30,
           ),
-          UnSelectedOptionWidget(
-            UnSelectedOption: "عربي",
-          ),
+          GestureDetector(
+              onTap: () {
+                appProvider.changeLanuage("ar");
+                Navigator.pop(context);
+              },
+              child: appProvider.CurrentLanguage == "ar"
+                  ? SelectedOptionWidget(SelectedOption: "عربي")
+                  : UnSelectedOptionWidget(UnSelectedOption: "عربي")),
         ],
       ),
     );

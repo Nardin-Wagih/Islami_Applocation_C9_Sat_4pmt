@@ -8,7 +8,7 @@ class SelectedOptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: Colors.white24,

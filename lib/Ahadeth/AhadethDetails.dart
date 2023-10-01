@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
+import '../Core/Provider/AppProvider.dart';
 import 'AhadethView.dart';
 
 class AhadethDetails extends StatefulWidget {
@@ -20,13 +22,13 @@ class _AhadethDetailsState extends State<AhadethDetails> {
   @override
   Widget build(BuildContext context) {
     var arg = ModalRoute.of(context)?.settings.arguments as hadethDetails;
-
+    var appProvider = Provider.of<AppProvider>(context);
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage("assets/Images/background.png"),
+        image: AssetImage(appProvider.background()),
         fit: BoxFit.cover,
       )),
       child: Scaffold(
@@ -40,18 +42,18 @@ class _AhadethDetailsState extends State<AhadethDetails> {
           width: mediaQuery.width,
           height: mediaQuery.height,
           decoration: BoxDecoration(
-            color: Color(0xffF8F8F8).withOpacity(0.8),
+            color: theme.colorScheme.onBackground.withOpacity(0.8),
             borderRadius: BorderRadius.circular(25),
           ),
           child: Column(
             children: [
               Text(
                 arg.title,
-                style: theme.textTheme.bodyMedium,
+                style: theme.textTheme.headlineLarge,
               ),
               Divider(
                 thickness: 1.2,
-                color: theme.primaryColor,
+                color: theme.colorScheme.onSecondary,
                 indent: 40,
                 endIndent: 40,
               ),
@@ -60,7 +62,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
                   itemBuilder: (context, index) => Text(
                     arg.content,
                     textAlign: TextAlign.center,
-                    style: theme.textTheme.bodySmall,
+                    style: theme.textTheme.bodySmall?.copyWith(height: 1.8),
                   ),
                   itemCount: 1,
                 ),

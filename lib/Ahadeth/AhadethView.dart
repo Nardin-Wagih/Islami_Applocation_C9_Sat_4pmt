@@ -21,7 +21,7 @@ class _AhadethViewState extends State<AhadethView> {
       children: [
         Image(image: AssetImage("assets/Images/ahadeth_image.png")),
         Divider(
-          color: theme.primaryColor,
+          color: theme.colorScheme.onSecondary,
           thickness: 1.2,
           height: 10,
         ),
@@ -30,7 +30,7 @@ class _AhadethViewState extends State<AhadethView> {
           style: theme.textTheme.bodyLarge,
         ),
         Divider(
-          color: theme.primaryColor,
+          color: theme.colorScheme.onSecondary,
           thickness: 1.2,
           height: 10,
         ),
@@ -46,6 +46,7 @@ class _AhadethViewState extends State<AhadethView> {
                 child: Text(
                   allHadeth[index].title,
                   textAlign: TextAlign.center,
+                  style: theme.textTheme.bodyLarge,
                 )),
             itemCount: allHadeth.length,
           ),
